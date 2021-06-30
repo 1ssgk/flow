@@ -1,6 +1,7 @@
-### 플로우 과제 1. 파일 확장자 차단 (table과 화면 개발)
+## 플로우 과제
+1. 파일 확장자 차단 (table과 화면 개발)
 
-# Vue.js + Springboot
+## Vue.js + Springboot
 frontend (화면) / src(서버)
 
 
