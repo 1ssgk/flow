@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     fixItems    : [],
     customItems : [],
-    customCnt   : 0
+    customCnt   : 0,
+    extension   : "",
   },
   mutations: {
     getExtensionList: (state, payload) => {
@@ -16,7 +17,9 @@ export default new Vuex.Store({
       state.fixItems    = payload.fix;
       state.customItems = payload.cus;
       state.customCnt   = payload.cnt;
-      //state.customCnt   = payload.cnt;
+    },
+    resetExtension: (state) => {
+      state.extension   = "";
     },
   },
   actions: {
@@ -82,6 +85,9 @@ export default new Vuex.Store({
 
         let rData = response.data;
         commit('getExtensionList', rData)
+        commit('resetExtension')
+
+        alert("추가하였습니다.")
       })
       .catch(function (error) {
         console.log(error);

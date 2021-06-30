@@ -43,7 +43,7 @@
           </v-col>
           <v-col cols="6" class="">
             <v-text-field
-              v-model="extension"
+              v-model="$store.state.extension"
               label="확장자 입력"
               placeholder="최대 20자"
               solo
@@ -55,7 +55,7 @@
             <v-btn
               color="gray"
               v-if="$store.state.customCnt != 200"
-              @click="insertCustomExtension(extension)"
+              @click="insertCustomExtension($store.state.extension)"
             >
               +추가
             </v-btn>
@@ -107,9 +107,6 @@
     data () {
       
       return {
-        extension:"",
-        custom_items:[]
-        
       }
       
     },
