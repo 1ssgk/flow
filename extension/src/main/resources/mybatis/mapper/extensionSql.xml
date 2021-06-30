@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 아래 !DOCTYPE 이 있어야 관련 자동완성을 도와줍니다 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace에 Mapper.class 위치를 명시하여 맵핑?!한다. -->
+<mapper namespace="extensionMapper">
+
+<!-- Mapper.class에 매소드명이 id 파라미터 타입은 풀패키지명 또는 properties에 설정으로.. -->
+    <!-- 고정 확장자 리스트 데이터 -->
+    <select id="selectFixExtensionList" resultType="camelmap">
+        SELECT 
+               NO
+             , NAME
+             , SELECT_CHK
+          FROM 
+               EXTENSION
+         WHERE 
+               TYPE = 'FIX'
+         ORDER BY
+               NO;
+    </select>
+
+    <!-- 커스텀 확장자 리스트 데이터 -->
+    <select id="selectCustomExtensionList" resultType="camelmap">
+        SELECT 
+               NO
+             , NAME
+          FROM 
+               EXTENSION
+         WHERE 
+               TYPE = 'CUS'
+         ORDER BY
+               NO;
+    </select>
+
+    <!-- 커스텀 확장자 COUNT -->
+    <select id="selectCustomExtensionCount" resultType="int">
+        SELECT 
+               COUNT(NO) AS CUSTOM_CNT
+          FROM EXTENSION
+         WHERE 
+               TYPE = 'CUS';
+    </select>
+
+    <!-- 고정 확장자 체크 여부 업데이트 -->
+    <update id="updateFixExtension" parameterType="java.util.HashMap">
+        UPDATE 
+               EXTENSION
+           SET
+               SELECT_CHK   = #{select_chk}
+         WHERE 
+               NO   = #{no}
+           AND LOWER(NAME) = LOWER(#{name});
+    </update>
+
+    <!-- 커스텀 확장자 삭제 -->
+    <delete id="deleteCustomExtension" parameterType="java.util.HashMap">
+        DELETE FROM 
+               EXTENSION
+         WHERE 
+               NO   = #{no}
+           AND LOWER(NAME) = LOWER(#{name});
+    </delete>
+
+    <!-- 커스텀 확장자 추가 시 Name 확인 -->
+    <select id="existCustomExtensionName" resultType="camelmap">
+        SELECT 
+               NO
+             , NAME
+          FROM EXTENSION
+         WHERE 
+               LOWER(NAME) = LOWER(#{name});
+    </select>
+
+    <!-- 커스텀 확장자 추가 -->
+    <insert id="insertCustomExtension" parameterType="java.util.HashMap">
+        INSERT INTO 
+               EXTENSION
+             (
+               NO
+             , NAME
+             , TYPE
+             )
+        VALUES
+             ( 
+               (SELECT SUBEXT.NO FROM(SELECT MAX(NO)+1 AS NO FROM EXTENSION) AS SUBEXT)
+             , #{name}
+             , 'CUS'
+             )
+            ON DUPLICATE KEY
+        UPDATE ADD_CNT = (SELECT SUBEXT.ADD_CNT FROM EXTENSION AS SUBEXT WHERE LOWER(SUBEXT.NAME) = LOWER(#{name}));
+    </insert>
+    
+</mapper>
