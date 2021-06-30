@@ -1,10 +1,16 @@
-
 <template>
   <v-container class="d-flex flex-column justify-center" style="">
+        <v-row class="align-center" style="border-width: 4px 0px 4px 0px; border-color: black; border-style: solid;;!important">
+          <v-col cols="12">
+            <p class="font-weight-black text-left headline" >
+              ◎ 파일 확장자 차단
+            </p>
+          </v-col>
+        </v-row>
         <v-row class="align-center">
           <v-col cols="12">
-            <p class="font-weight-black text-left headline">
-              ◎ 파일확장자에 따라 특정 형식의 파일을 첨부하거나 전송하지 못하도록 제한
+            <p class="font-weight-black text-left ">
+              파일확장자에 따라 특정 형식의 파일을 첨부하거나 전송하지 못하도록 제한
             </p>
           </v-col>
         </v-row>
@@ -16,7 +22,7 @@
           </v-col>
           <v-col class="d-flex" cols="9">
             <v-checkbox
-              class="mx-2 my-2"
+              class="mx-1 my-2"
               type="number"
               :false-value="0"
               :true-value="1"
