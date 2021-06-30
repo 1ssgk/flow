@@ -1,9 +1,3 @@
-<style>
-.top-bar{
-  background: rgb(240, 240, 240);
-}
-</style>
-
 <template>
   <div id="app">
     <v-app id="inspire">
