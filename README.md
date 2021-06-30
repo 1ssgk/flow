@@ -1,19 +1,11 @@
-# frontend
+## 플로우 과제
+1. 파일 확장자 차단 (table과 화면 개발)
 
-## Project setup
-```
-npm install
-```
+## Vue.js + Springboot
+frontend (화면) / src(서버)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+
