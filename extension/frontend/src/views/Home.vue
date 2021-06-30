@@ -1,6 +1,6 @@
 
 <template>
-  <v-container class="d-flex flex-column justify-center" style="height:100%; width:100%;">
+  <v-container class="d-flex flex-column justify-center" style="">
         <v-row class="align-center">
           <v-col cols="12">
             <p class="font-weight-black text-left headline">
@@ -14,7 +14,6 @@
               고정 확장자
             </p>
           </v-col>
-          <!-- DB에서 default 데이터를 가져와서 for문 -->
           <v-col class="d-flex" cols="9">
             <v-checkbox
               class="mx-2 my-2"
@@ -63,7 +62,7 @@
           <v-col cols="9" class="">
             <v-card class="fill-height">
               <v-card-subtitle>
-                {{$store.state.customCnt}} /200
+                {{$store.state.customCnt}} / 200
               </v-card-subtitle>
                 <v-card-actions>
                   <v-list-item class="d-flex" style="height:300px">

@@ -7,7 +7,7 @@
             fluid
             class="white"
           >
-            <router-view :style="{height:`40%`,width:`50%`}"></router-view>
+            <router-view :style="{height:`40%`,width:`60%`}"></router-view>
           </v-container>
         </v-main>
       </v-app>
